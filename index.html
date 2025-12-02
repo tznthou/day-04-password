@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>暗黑密碼鍛造爐</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>暗黑密碼鍛造爐</h1>
+      <p class="tagline">鍛造你的專屬神器</p>
+    </header>
+
+    <main class="main">
+      <!-- 裝備卡片 -->
+      <section class="item-card" id="item-card">
+        <div class="item-rarity" id="item-rarity">普通</div>
+        <div class="item-name" id="item-name">未鑑定的密碼</div>
+        <div class="item-password">
+          <span id="password-text" class="password-text blinded">???????????????</span>
+        </div>
+        <div class="item-stats">
+          <div class="stat">
+            <span class="stat-label">防禦力</span>
+            <span class="stat-value" id="defense-value">---</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">破解時間</span>
+            <span class="stat-value" id="crack-time">計算中...</span>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button id="btn-peek" class="btn btn-secondary" title="鑑定">
+            <i class="fa-solid fa-eye"></i>
+            <span>鑑定</span>
+          </button>
+          <button id="btn-copy" class="btn btn-secondary" title="拾取">
+            <i class="fa-solid fa-hand"></i>
+            <span>拾取</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 鍛造按鈕 -->
+      <button id="btn-generate" class="btn btn-forge">
+        <i class="fa-solid fa-hammer"></i>
+        <span>重新鍛造</span>
+      </button>
+
+      <!-- 鍛造設定 -->
+      <section class="forge-settings">
+        <div class="setting-group">
+          <label class="setting-label">
+            鍛造強度：<span id="length-value" class="length-value">16</span>
+          </label>
+          <input type="range" id="length-slider" class="slider" min="8" max="64" value="16">
+        </div>
+
+        <div class="setting-group">
+          <span class="setting-title">材料選擇</span>
+          <div class="materials">
+            <label class="material-label">
+              <input type="checkbox" id="opt-upper" checked>
+              <span class="material-box"></span>
+              <span>大寫符文 A-Z</span>
+            </label>
+            <label class="material-label">
+              <input type="checkbox" id="opt-lower" checked>
+              <span class="material-box"></span>
+              <span>小寫符文 a-z</span>
+            </label>
+            <label class="material-label">
+              <input type="checkbox" id="opt-numbers" checked>
+              <span class="material-box"></span>
+              <span>數字魔石 0-9</span>
+            </label>
+            <label class="material-label">
+              <input type="checkbox" id="opt-symbols" checked>
+              <span class="material-box"></span>
+              <span>特殊結晶 !@#$</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="material-label">
+            <input type="checkbox" id="opt-exclude-confusing">
+            <span class="material-box"></span>
+            <span>排除詛咒字元 (0O1lI)</span>
+          </label>
+        </div>
+
+        <div class="setting-group toggle-group">
+          <label class="toggle-label">
+            <span class="toggle-text"><i class="fa-solid fa-eye-slash"></i> 未鑑定模式</span>
+            <div class="toggle-switch">
+              <input type="checkbox" id="opt-blind" checked>
+              <span class="toggle-slider"></span>
+            </div>
+          </label>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast 提示 -->
+  <div id="toast" class="toast">裝備已放入背包！</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

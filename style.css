@@ -1,0 +1,546 @@
+/* ===== CSS Variables ===== */
+:root {
+  /* 基礎色 */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #242424;
+  --bg-card: #2a2a2a;
+  --text-primary: #e8e8e8;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666;
+  --border: #3a3a3a;
+
+  /* 稀有度顏色（純色） */
+  --rarity-common: #9d9d9d;
+  --rarity-magic: #4a90d9;
+  --rarity-rare: #d4af37;
+  --rarity-epic: #a855f7;
+  --rarity-legendary: #f97316;
+  --rarity-ancient: #dc2626;
+
+  /* 功能色 */
+  --accent: #4a90d9;
+  --success: #22c55e;
+
+  /* 字型 */
+  --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* 圓角 */
+  --radius: 4px;
+  --radius-lg: 8px;
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  line-height: 1.5;
+}
+
+/* ===== Container ===== */
+.container {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ===== Header ===== */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ===== Item Card ===== */
+.item-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+
+/* 稀有度樣式 */
+.item-card.rarity-common { border-color: var(--rarity-common); }
+.item-card.rarity-magic { border-color: var(--rarity-magic); }
+.item-card.rarity-rare { border-color: var(--rarity-rare); }
+.item-card.rarity-epic { border-color: var(--rarity-epic); }
+.item-card.rarity-legendary { border-color: var(--rarity-legendary); }
+.item-card.rarity-ancient { border-color: var(--rarity-ancient); }
+
+.item-rarity {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+  color: var(--rarity-common);
+}
+
+.item-card.rarity-common .item-rarity { color: var(--rarity-common); }
+.item-card.rarity-magic .item-rarity { color: var(--rarity-magic); }
+.item-card.rarity-rare .item-rarity { color: var(--rarity-rare); }
+.item-card.rarity-epic .item-rarity { color: var(--rarity-epic); }
+.item-card.rarity-legendary .item-rarity { color: var(--rarity-legendary); }
+.item-card.rarity-ancient .item-rarity { color: var(--rarity-ancient); }
+
+.item-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.item-card.rarity-common .item-name { color: var(--rarity-common); }
+.item-card.rarity-magic .item-name { color: var(--rarity-magic); }
+.item-card.rarity-rare .item-name { color: var(--rarity-rare); }
+.item-card.rarity-epic .item-name { color: var(--rarity-epic); }
+.item-card.rarity-legendary .item-name { color: var(--rarity-legendary); }
+.item-card.rarity-ancient .item-name { color: var(--rarity-ancient); }
+
+.item-password {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  text-align: center;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.password-text {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  word-break: break-all;
+  color: var(--text-primary);
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.password-text.blinded {
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+}
+
+/* 裝備數值 */
+.item-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* 卡片按鈕 */
+.item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn:hover {
+  background: var(--border);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  flex: 1;
+}
+
+.btn-forge {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1rem;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.btn-forge:hover {
+  background: #3a7bc8;
+  border-color: #3a7bc8;
+}
+
+/* ===== Forge Settings ===== */
+.forge-settings {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.setting-group {
+  margin-bottom: 16px;
+}
+
+.setting-group:last-child {
+  margin-bottom: 0;
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.setting-title {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.length-value {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ===== Slider ===== */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--bg-primary);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== Materials (Checkboxes) ===== */
+.materials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.material-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.material-label input[type="checkbox"] {
+  display: none;
+}
+
+.material-box {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.material-label input:checked + .material-box {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.material-label input:checked + .material-box::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 1px;
+}
+
+/* ===== Toggle Switch ===== */
+.toggle-group {
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.toggle-text {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-text i {
+  color: var(--text-secondary);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-primary);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 2px;
+  top: 2px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+  background: #fff;
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--success);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ===== Forge Animations ===== */
+
+/* 鍛造中震動 */
+@keyframes forge-shake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-4px) rotate(-0.5deg); }
+  20% { transform: translateX(4px) rotate(0.5deg); }
+  30% { transform: translateX(-4px) rotate(-0.5deg); }
+  40% { transform: translateX(4px) rotate(0.5deg); }
+  50% { transform: translateX(-2px); }
+  60% { transform: translateX(2px); }
+  70% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  90% { transform: translateX(-1px); }
+}
+
+.item-card.forging {
+  animation: forge-shake 0.6s ease-out;
+}
+
+/* 稀有度揭曉光芒 */
+@keyframes rarity-reveal {
+  0% {
+    box-shadow: 0 0 0 0 var(--glow-color);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px var(--glow-color);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+    transform: scale(1);
+  }
+}
+
+.item-card.reveal {
+  animation: rarity-reveal 0.5s ease-out;
+}
+
+.item-card.rarity-common.reveal { --glow-color: var(--rarity-common); }
+.item-card.rarity-magic.reveal { --glow-color: var(--rarity-magic); }
+.item-card.rarity-rare.reveal { --glow-color: var(--rarity-rare); }
+.item-card.rarity-epic.reveal { --glow-color: var(--rarity-epic); }
+.item-card.rarity-legendary.reveal { --glow-color: var(--rarity-legendary); }
+.item-card.rarity-ancient.reveal { --glow-color: var(--rarity-ancient); }
+
+/* 密碼滾動效果 */
+@keyframes text-scramble {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.3; }
+}
+
+.password-text.scrambling {
+  animation: text-scramble 0.1s infinite;
+}
+
+/* 鍛造按鈕效果 */
+.btn-forge.forging {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn-forge.forging i {
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 數值跳動 */
+@keyframes stat-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.stat-value.pop {
+  animation: stat-pop 0.3s ease-out;
+}
+
+/* 稀有度文字閃現 */
+@keyframes rarity-flash {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.item-rarity.flash {
+  animation: rarity-flash 0.3s ease-out;
+}
+
+.item-name.flash {
+  animation: rarity-flash 0.3s ease-out 0.1s both;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  body {
+    padding: 16px;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  .materials {
+    grid-template-columns: 1fr;
+  }
+}
