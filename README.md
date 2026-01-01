@@ -1,8 +1,8 @@
-# 暗黑密碼鍛造爐
+# Password 遊戲化密碼產生器
 
 > 用 RPG 裝備鍛造的方式產生密碼，密碼強度 = 裝備稀有度。
 
-[← 回到 Muripo HQ](https://tznthou.github.io/muripo-hq/)
+[← 回到 Muripo HQ](https://tznthou.github.io/muripo-hq/) | [English](README_EN.md)
 
 ## TL;DR
 
@@ -80,3 +80,9 @@
 ## License
 
 [MIT](LICENSE)
+
+---
+
+## 作者
+
+子超 - [tznthou@gmail.com](mailto:tznthou@gmail.com)
